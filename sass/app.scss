@@ -1,0 +1,351 @@
+// Global Foundation Settings
+@import "settings";
+@import "compass/css3";
+
+// Custom Settings
+$body-bg: #1A1A1A url("../images/broken_noise.png") repeat repeat fixed;
+$body-font-color: #e0e0e0;
+$header-font-color: #fff;
+$header-font-family: 'Montserrat', sans-serif;
+$body-font-family: 'Muli', sans-serif;
+$input-font-color: #e0e0e0;
+$base-line-height: 150%;
+$header-bg-ex-hov: #c9e8aa;
+
+// Comment out this import if you are customizing you imports below
+// @import "foundation";
+
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below. You must uncomment the following if customizing
+
+@import "foundation/components/global"; // *always required
+@import "foundation/components/grid";
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+@import "foundation/components/type";
+@import "foundation/components/buttons";
+@import "foundation/components/forms"; // *requires components/buttons
+@import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+// @import "foundation/components/button-groups"; // *requires components/buttons
+// @import "foundation/components/dropdown-buttons"; // *requires components/buttons
+// @import "foundation/components/split-buttons"; // *requires components/buttons
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+// @import "foundation/components/top-bar";  // *requires components/grid
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+@import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
+// @import "foundation/components/panels";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
+
+
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+@mixin secondary-heading() {
+	color: #cfad49;
+	@include text-shadow(#e5e5e5 1px .5px .5px);
+}
+// Mixin for the pressed effect
+@mixin well {
+	border: 0;
+	background: #202020;
+	@include box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset);
+}
+// Mixin for the thick black line effect
+@mixin black-line {
+	@include box-shadow(rgba(255, 255, 255, 0.07) 0 1px 0);
+	border-bottom: 3px solid #121212;
+}
+// Mixin for feature headers
+@mixin feature-headers($font-size) {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: $font-size;
+}
+
+
+// header customization
+.polyhead {
+	min-width: 100%;
+	padding-top: emCalc(70px);
+	background-repeat:repeat-x;
+	background-image:url('../images/header-bg.svg');
+
+	header {
+		@include black-line();
+	}
+
+	h1 {
+		font-size: emCalc(80px);
+		text-transform: uppercase;
+		line-height: 1;
+		color: white;
+		@include text-shadow(#B69430 3px 3px 1px);
+	}
+
+	h2 {
+	font-size: emCalc(30px);
+	line-height: 1.2;
+	@include secondary-heading();
+	cursor: pointer;
+	display: inline-block;
+	}
+
+	h3 {
+
+	}
+}
+
+p.desc {
+	display: none;
+	@include well;
+	padding: emCalc(20px) emCalc(10px);
+}
+
+.expanded, .collapsed {
+	position: relative;
+	padding-left: 20px;
+}
+.expander.expanded:before {
+	position:absolute;
+	font-family: FontAwesome;
+	top: -3px;
+	left: -5px;
+	content: "\f0dd"; 
+}
+.expander.collapsed:before {
+	position:absolute;
+	font-family: FontAwesome;
+	top: 3px;
+	left: -5px;
+	content: "\f0da"; 
+}
+
+// body customization
+div.polybody {
+	min-width: 100%;
+
+
+	strong {
+		display: inline-block;
+		font-size: emCalc(16px);
+		@include secondary-heading();
+		@include text-shadow(0 0 0);
+		margin-top: 20px;
+	}
+}
+
+input[type="text"].searcher {
+	@include radius(10px);
+	margin-top: 10px;
+	@include well;
+}
+
+//features customization
+
+section {
+	margin-bottom: 100px;
+}
+
+.featureList {
+	margin-top: 30px;
+
+	header {
+		position: relative;
+		// transition
+		@include transition-property(background);
+		@include transition-duration(300ms);
+		@include transition-timing-function(ease-in);
+
+		cursor: pointer;
+		background-color: #e8e8aa;
+		@include text-shadow(0 1px 0 white);
+		z-index: 1;
+		@include border-radius(emCalc(5px) emCalc(45px) emCalc(5px) emCalc(5px));
+
+		&:hover {
+			background-color: $header-bg-ex-hov;
+		}
+	}
+
+	article {
+		margin-top: emCalc(30px);
+	}
+}
+
+
+.feature {
+	@include feature-headers(emCalc(24px));
+	color: #4F4F51;
+	margin: 0;
+	padding: emCalc(5px) 0;
+}
+
+.type {
+	@include feature-headers(emCalc(20px));
+	color: #4a6cce;
+	margin: 0;
+	float: right;
+	padding: emCalc(5px) emCalc(25px);
+	background-color: #aabae8;
+	line-height: 1.8;
+	@include border-radius(emCalc(5px) emCalc(45px) emCalc(5px) emCalc(35px));
+	top: 0;
+}
+
+header.collapsed {
+	position: relative;
+	vertical-align: middle;
+	top: 0;
+	left: 0;
+
+	.feature:before {
+		font-family: FontAwesome;
+		content: "\F150";
+		padding-right: emCalc(10px);
+	}
+}
+
+header.expanded {
+	@extend header.collapsed;
+	background-color: $header-bg-ex-hov;
+	.feature:before {
+		content: "\F151";
+	}
+}
+
+.content {
+	@include well;
+	background-color: #ffffff;
+	display: none;
+	padding: 1em 1em 1.5em 1em;
+	line-height: 1.2;
+	color: #4c4c4c;
+
+	font-size: emCalc(16px);
+
+	h4 {
+		font-size: emCalc(18px);
+		color: #afb157;
+	}
+
+	ul {
+		list-style: none;
+		margin-left: emCalc(10px);
+
+		li:before {
+			font-family: FontAwesome;
+			content: "\F08E";
+			margin-right: emCalc(5px);
+			font-size: emCalc(12px);
+		}
+
+		em {
+			font-size: emCalc(14px);
+		}
+
+		a {
+			font-weight: bold;
+			color: #1e1e1e;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		p {
+			margin-left: emCalc(40px);
+			margin-top: emCalc(5px);
+			font-size: emCalc(14px);
+			color: #232927;
+		}
+		strong {
+			margin-left: emCalc(5px);
+		}
+	}
+}
+
+td  i{
+	font-size: emCalc(10px);
+	line-height: 3;
+}
+table {
+	td,th {
+		border: 1px solid white;
+		text-align: center;
+		background-color: white;
+	}
+	tr {
+		th {
+			border-top: 0;
+			padding: emCalc(5px) 0;
+			color: #cfad49;
+		}
+	}
+	td {
+		&.supported {
+			background-color: #aece4a;
+			color: #ffffff;
+			font-weight: bold;
+		}
+		&.unsupported {
+			@extend .supported;
+			background-color: #ce6a4a;
+		}
+		&.partialsupported {
+			@extend .supported;
+			background-color: desaturate(#aece4a, 20%);
+		}
+	}
+}
+i {
+	&.chrome {
+		display: inline-block;
+		height: 32px;
+		width: 32px;
+		background-image: url("../images/chrome.png");
+		vertical-align: text-top;
+		margin: 0 emCalc(5px);
+	}
+	&.firefox {
+		@extend .chrome;
+		background-image: url("../images/firefox.png");
+	}
+	&.ie {
+		@extend .chrome;
+		background-image: url("../images/ie10.png");
+	}
+	&.safari {
+		@extend .chrome;
+		background-image: url("../images/safari.png");
+	}
+	&.opera {
+		@extend .chrome;
+		background-image: url("../images/opera.png");
+	}
+}
+.more {
+	float: right;
+	font-size: emCalc(10px);
+}
